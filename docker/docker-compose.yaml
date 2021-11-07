@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  backend:
+    build: ./Dockerfile
+    ports:
+      - "8000:8000"
+    networks: 
+      - backend
+      - database
+    depends_on:
+      - database
+  
+  database:
+    image: postgres:14.0
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    networks: 
+      - database
+  
+networks:
+  backend:
+  database:
