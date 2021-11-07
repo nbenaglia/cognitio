@@ -29,9 +29,15 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .data(pool.clone())
             .route("/technologies", web::get().to(handlers::get_technologies))
-            .route("/technologies/{id}", web::get().to(handlers::get_technology_by_id))
+            .route(
+                "/technologies/{id}",
+                web::get().to(handlers::get_technology_by_id),
+            )
             .route("/technologies", web::post().to(handlers::add_technology))
-            .route("/technologies/{id}", web::delete().to(handlers::delete_technology))
+            .route(
+                "/technologies/{id}",
+                web::delete().to(handlers::delete_technology),
+            )
     })
     .bind("127.0.0.1:8080")?
     .run()

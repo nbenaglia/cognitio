@@ -5,12 +5,12 @@ use serde::{Deserialize, Serialize};
 pub struct Technology {
     pub id: i32,
     pub description: String,
-    pub created_at: chrono::NaiveDateTime
+    pub created_at: chrono::NaiveDateTime,
 }
 
 #[derive(Insertable, Serialize, Debug)]
 #[table_name = "technologies"]
 pub struct NewTechnology<'a> {
     pub description: &'a str,
-    pub created_at: chrono::NaiveDateTime
+    pub created_at: chrono::NaiveDateTime,
 }
