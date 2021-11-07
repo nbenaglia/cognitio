@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  backend:
+    build: ./Dockerfile
+    container_name: backend
+    ports:
+      - "8080:8080"
+    networks: 
+      - backend
+      - database
+    depends_on:
+      - database
+  
+  database:
+    image: postgres:14.0
+    container_name: database
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    networks: 
+      - database
+  
+networks:
+  backend:
+  database:
