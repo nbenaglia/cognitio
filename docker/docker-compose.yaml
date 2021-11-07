@@ -3,8 +3,12 @@ services:
   backend:
     build: ./Dockerfile
     container_name: backend
+    environment:
+      - DATABASE_URL=postgres://postgres:password@database/cognitio?sslmode=disable
     ports:
       - "8080:8080"
+    links:
+       - database
     networks: 
       - backend
       - database
