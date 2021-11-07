@@ -2,7 +2,7 @@
 
 This project is a RESTful backend to store and manage the level of knowledge of a group of people.
 
-The level is a self-evaluation done by the subject using a range of values (and their points in parenthesis):
+The level is a self-evaluation done by the subject using a range of values (corresponding to the points in parenthesis):
 
 - guru        (10)
 - expert       (7)
@@ -16,6 +16,12 @@ The level is a self-evaluation done by the subject using a range of values (and 
 
 A `docker-compose.yaml` file defines all the infrastructure you need.
 
-In order to develop you first need a running database:
+In order to develop you first need:
 
-`docker-compose up database`
+- install `diesel` with `cargo install diesel_cli --no-default-features --features postgres`
+- a running database with `docker-compose up database`
+
+Then you can apply diesel scripts with:
+
+- `diesel setup`
+- `diesel migration run`
