@@ -1,11 +1,16 @@
-use diesel;
-use diesel::pg::PgConnection;
-use diesel::prelude::*;
-use super::schema::technologies;
-use super::schema::technologies::dsl::technologies as all_technologies;
+use crate::schema::*;
+use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Queryable)] 
+#[derive(Debug, Serialize, Deserialize, Queryable)]
 pub struct Technology {
     pub id: i32,
-    pub description: String
+    pub description: String,
+    pub created_at: chrono::NaiveDateTime
+}
+
+#[derive(Insertable, Debug)]
+#[table_name = "technologies"]
+pub struct NewTechnology<'a> {
+    pub description: &'a str,
+    pub created_at: chrono::NaiveDateTime
 }
