@@ -8,7 +8,7 @@ pub struct Technology {
     pub created_at: chrono::NaiveDateTime
 }
 
-#[derive(Insertable, Debug)]
+#[derive(Insertable, Serialize, Debug)]
 #[table_name = "technologies"]
 pub struct NewTechnology<'a> {
     pub description: &'a str,
