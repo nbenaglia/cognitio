@@ -5,4 +5,4 @@ CREATE TABLE technologies
     created_at  TIMESTAMP
 );
 
-INSERT INTO technologies (id, description, created_at) values (1, 'linux', '2004-10-19 10:23:54');
+INSERT INTO technologies (description, created_at) values ('linux', '2004-10-19 10:23:54');
