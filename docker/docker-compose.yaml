@@ -2,8 +2,9 @@ version: '3.3'
 services:
   backend:
     build: ./Dockerfile
+    container_name: backend
     ports:
-      - "8000:8000"
+      - "8080:8080"
     networks: 
       - backend
       - database
@@ -12,6 +13,7 @@ services:
   
   database:
     image: postgres:14.0
+    container_name: database
     environment:
       - POSTGRES_PASSWORD=password
     ports:
