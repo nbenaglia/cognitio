@@ -5,8 +5,8 @@ services:
       context: ../backend
       dockerfile: Dockerfile
     container_name: backend
-    environment:
-      - DATABASE_URL=postgres://postgres:password@database/cognitio?sslmode=disable
+    env_file:
+      - ../backend/.env
     ports:
       - "8080:8080"
     links:
@@ -14,6 +14,7 @@ services:
     networks: 
       - backend
       - database
+      - oauth
     depends_on:
       - database
   

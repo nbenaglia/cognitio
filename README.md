@@ -21,6 +21,12 @@ In order to develop you first need:
 - install `diesel` with `cargo install diesel_cli --no-default-features --features postgres`
 - a running database with `docker-compose database up`
 
+then you can run your build and test it.
+
+To run all environment defined in docker-compose.yaml:
+
+- from root folder `docker-compose -f docker/docker-compose.yaml --force-rm --no-cache up`
+
 Then you can apply diesel scripts with:
 
 - `diesel setup`
