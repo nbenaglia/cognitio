@@ -10,6 +10,7 @@ edition = "2018"
 actix-rt = "1.0.0"
 actix-service = "1.0.1"
 actix-web = "2.0.0"
+actix-web-httpauth = { git = "https://github.com/actix/actix-extras" }
 alcoholic_jwt = "1.0.0"
 chrono = { version = "0.4.10", features = ["serde"] }
 derive_more = "0.99.2"
