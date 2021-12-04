@@ -14,6 +14,7 @@ pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
+    // get info from .env file
     dotenv::dotenv().ok();
     std::env::set_var("RUST_LOG", "actix_web=debug");
     let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
@@ -24,7 +25,7 @@ async fn main() -> std::io::Result<()> {
         .build(manager)
         .expect("Failed to create pool.");
 
-    // Start http server
+    // start http server
     HttpServer::new(move || {
         App::new()
             .data(pool.clone())

@@ -19,7 +19,7 @@ A `docker-compose.yaml` file defines all the infrastructure you need.
 In order to develop you first need:
 
 - install `diesel` with `cargo install diesel_cli --no-default-features --features postgres`
-- a running database with `docker-compose up database`
+- a running database with `docker-compose database up`
 
 Then you can apply diesel scripts with:
 
