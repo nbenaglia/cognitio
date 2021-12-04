@@ -1,17 +1,20 @@
 version: '3.3'
 services:
   backend:
-    build: ./Dockerfile
+    build: 
+      context: ../backend
+      dockerfile: Dockerfile
     container_name: backend
-    environment:
-      - DATABASE_URL=postgres://postgres:password@database/cognitio?sslmode=disable
+    env_file:
+      - ../backend/.env
     ports:
       - "8080:8080"
     links:
-       - database
+      - database
     networks: 
       - backend
       - database
+      - oauth
     depends_on:
       - database
   
@@ -24,7 +27,27 @@ services:
       - "5432:5432"
     networks: 
       - database
+
+  oauth:
+    image: jboss/keycloak:15.0.2
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - POSTGRES_DB=keycloak 
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "9090:8080"
+    links:
+      - database
+    networks: 
+      - oauth
+      - database
+    depends_on:
+      - database
   
 networks:
   backend:
   database:
+  oauth:
